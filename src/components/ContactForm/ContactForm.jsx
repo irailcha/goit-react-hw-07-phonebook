@@ -3,9 +3,10 @@ import { useSelector, useDispatch } from 'react-redux';
 import { StyledForm, StyledField, SubmitButton } from './ContactForm.styled';
 import { Formik } from 'formik';
 import * as yup from 'yup';
-import { nanoid } from 'nanoid';
-import { addContact } from '../../redux/contactsSlice';
-import { selectContacts } from '../../redux/selectors';
+
+import { addContact } from '../../redux/operations';
+
+import {selectContacts} from '../../redux/selectors';
 
 const userSchema = yup.object().shape({
   name: yup.string().required().label("name"),
@@ -16,14 +17,16 @@ const ContactForm = () => {
   const dispatch = useDispatch();
   const contacts = useSelector(selectContacts);
 
+
   const addContactHandler = (values, { resetForm }) => {
-    const newContact = { ...values, id: nanoid() };
+    const newContact = { ...values};
     if (contacts.find(contact => contact.name.toLowerCase() === values.name.toLowerCase() || contact.number === values.number)) {
       return alert(`${values.name} or ${values.number} is already exist`)
     }
     dispatch(addContact(newContact));
     resetForm();
   };
+
 
   return (
     <Formik initialValues={{ name: '', number: '' }} validationSchema={userSchema} onSubmit={addContactHandler}>
@@ -45,7 +48,10 @@ const ContactForm = () => {
             title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
             required
           />
+
+          
           <SubmitButton type='submit'> Add contact </SubmitButton>
+
         </StyledForm>
       )}
     </Formik>

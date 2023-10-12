@@ -2,14 +2,17 @@ import React from 'react';
 import './Filter.styled';
 import { FilterStyle } from './Filter.styled';
 import { useDispatch } from 'react-redux';
-import { changeFilter } from '../../redux/filterSlice';
+import { setFilter } from '../../redux/filterSlice';
+
+
+
 
 
 const Filter = ({ name }) => {
   const dispatch = useDispatch();
 
   const changeContactHandler = (newFilter) => {
-    dispatch(changeFilter(newFilter));
+    dispatch(setFilter(newFilter));
   };
 
   const handleReset = () => {
@@ -18,8 +21,7 @@ const Filter = ({ name }) => {
 
   return (
     <FilterStyle>
-      {
-        <input
+      {<input
           type='text'
           name='Find contact'
           value={name}

@@ -2,7 +2,7 @@ import React from 'react';
 import './ContactList.styled';
 import { ContactStyle, ContactListStyle, BtnDeleteStyle } from './ContactList.styled';
 import { useDispatch, useSelector} from 'react-redux';
-import { removeContact } from '../../redux/contactsSlice';
+import { contactsReducer } from '../../redux/contactsSlice';
 import { selectVisibleContacts } from '../../redux/selectors';
 
 const ContactList = () => {
@@ -10,7 +10,7 @@ const ContactList = () => {
   const visibleContacts = useSelector(selectVisibleContacts);
 
   const deleteContactHandler = (contactId) => {
-    dispatch(removeContact(contactId));
+    dispatch(contactsReducer(contactId));
   };
 
   return (
@@ -26,5 +26,3 @@ const ContactList = () => {
 }
 
 export default ContactList;
-
-
