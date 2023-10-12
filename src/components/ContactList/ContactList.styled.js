@@ -11,7 +11,8 @@ export const ContactListStyle=styled.ul`
 display: flex;
 flex-direction: column;
 gap: 15px;
-align-items: center;
+padding:0;
+width: 360px;
 
 `
 export const BtnDeleteStyle=styled.button`
@@ -24,6 +25,7 @@ box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.15);
 margin: auto;
 font-size: 15px;
 padding: 5px 10px;
+margin-right: 0;
 
 
 
