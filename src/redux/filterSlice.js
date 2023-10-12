@@ -6,19 +6,17 @@ const filterSlice = createSlice({
   initialState: '',
   reducers: {
     setFilter: (state, action) => {
-      state = action.payload;
+      return action.payload; 
     }
   },
   extraReducers: (builder) => {
     builder
       .addCase(filterContact.fulfilled, (state, action) => {
-      
-        state = state.filter(contact => contact.id !== action.payload);
+        return state.filter(contact => contact.id !== action.payload);
       });
   },
 });
 
 export const filterReducer = filterSlice.reducer;
-
 export const { setFilter } = filterSlice.actions;
 

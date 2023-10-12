@@ -19,13 +19,13 @@ const ContactForm = () => {
 
 
   const addContactHandler = (values, { resetForm }) => {
-    const newContact = { ...values};
+    const {name, number} = values;
     if (contacts.find(contact => contact.name.toLowerCase() === values.name.toLowerCase() || contact.number === values.number)) {
       return alert(`${values.name} or ${values.number} is already exist`)
     }
-    dispatch(addContact(newContact));
+    dispatch(addContact({name, phone:number}));
     resetForm();
-  };
+  }; 
 
 
   return (

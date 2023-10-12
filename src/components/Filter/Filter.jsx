@@ -5,9 +5,6 @@ import { useDispatch } from 'react-redux';
 import { setFilter } from '../../redux/filterSlice';
 
 
-
-
-
 const Filter = ({ name }) => {
   const dispatch = useDispatch();
 
@@ -21,7 +18,8 @@ const Filter = ({ name }) => {
 
   return (
     <FilterStyle>
-      {<input
+      {
+        <input
           type='text'
           name='Find contact'
           value={name}
